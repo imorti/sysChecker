@@ -9,9 +9,17 @@ import (
 func main() {
 	gopath := os.Getenv("GOPATH")
 	if gopath == "" {
-		colorstring.Println("[red]Looks like Go isn't configured on your machine. GOPATH is not set.")
+		colorstring.Println("[red] Uh oh, looks like GOPATH is not set.")
 	} else {
-		colorstring.Println("[green] Success! Your go environment is configured properly.")
+		colorstring.Println("[green] Success! Well looks like GOPATH is configured properly.")
+	}
+
+	goroot := os.Getenv("GOROOT")
+
+	if goroot == "" {
+		colorstring.Println("[red] Uh oh, Looks like GOROOT is not set.")
+	} else {
+		colorstring.Println("[green] Well looks like GOROOT is configured properly.")
 	}
 
 }
