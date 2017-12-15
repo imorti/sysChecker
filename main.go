@@ -1,25 +1,17 @@
 package main
 
 import (
-	"log"
 	"os"
-	"path/filepath"
-	"strings"
+
+	"github.com/mitchellh/colorstring"
 )
 
 func main() {
 	gopath := os.Getenv("GOPATH")
 	if gopath == "" {
-		log.Fatal("Your GOPATH has not been set!")
-	}
-
-	path := os.Getenv("PATH")
-	gobin := filepath.Join(gopath, "bin")
-	if !strings.Contains(path, gobin) {
-		log.Fatalf("Your PATH does not contain %s", gobin)
+		colorstring.Println("[red]Looks like Go isn't configured on your machine. GOPATH is not set.")
 	} else {
-		log.Println("Looks like Go isn't configured on your machine")
+		colorstring.Println("[green] Success! Your go environment is configured properly.")
 	}
 
-	log.Println("Success! Your go environment is configured properly.")
 }
